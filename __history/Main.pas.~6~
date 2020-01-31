@@ -1,0 +1,142 @@
+unit Main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, PanatesBlue,
+  Vcl.ComCtrls, dxCore, cxDateUtils, dxSkinsdxBarPainter, dxBar, cxClasses,
+  cxMemo, cxMaskEdit, cxDropDownEdit, cxCalendar, cxLabel, cxTextEdit,
+  dxSkinsForm, cxGroupBox, cxImageComboBox;
+
+type
+  TFrmHL7Test = class(TForm)
+    cxGroupBox1: TcxGroupBox;
+    dxSkinController1: TdxSkinController;
+    cxGroupBox2: TcxGroupBox;
+    cxGroupBox3: TcxGroupBox;
+    cxGroupBox4: TcxGroupBox;
+    edtHL7Result: TcxMemo;
+    edtJSONResult: TcxMemo;
+    dxBarManager1: TdxBarManager;
+    dxBarDockControl1: TdxBarDockControl;
+    dxBarManager1Bar1: TdxBar;
+    dxBarButton1: TdxBarButton;
+    dxBarButton2: TdxBarButton;
+    cxGroupBox5: TcxGroupBox;
+    cxLabel5: TcxLabel;
+    cxTextEdit2: TcxTextEdit;
+    cxGroupBox6: TcxGroupBox;
+    cxLabel2: TcxLabel;
+    edtPaitentSurName: TcxTextEdit;
+    cxLabel3: TcxLabel;
+    edtBirthDate: TcxDateEdit;
+    cxDateEdit1: TcxDateEdit;
+    cxLabel6: TcxLabel;
+    dxBarDockControl2: TdxBarDockControl;
+    dxBarDockControl3: TdxBarDockControl;
+    dxBarManager1Bar2: TdxBar;
+    dxBarManager1Bar3: TdxBar;
+    dxBarButton3: TdxBarButton;
+    dxBarButton4: TdxBarButton;
+    edtPaitentName: TcxTextEdit;
+    edtMothersMaidenName: TcxTextEdit;
+    cxLabel7: TcxLabel;
+    edtStatu: TcxImageComboBox;
+    cxLabel1: TcxLabel;
+    procedure dxBarButton3Click(Sender: TObject);
+  private
+    procedure CreateHL7String;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmHL7Test: TFrmHL7Test;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmHL7Test.CreateHL7String;
+var
+ encodingCharacters,
+ SendingApplication,
+ SendingFacility,
+ ReceivingApplication,
+ ReceivingFacility,
+ xDate, Security,
+ MessageType,
+ MessageControlId,
+ ProcessingId,
+ VersionId,
+ SequenceNumber : String;
+ PatientId,
+ PatientIdentifierList,
+ AlternatePatientId_Pid,
+ PatientName,
+ MothersMaidenName, pDate,
+ PatientAlias, Race, SetId,
+ PatientAddress, CountyCode,
+ PhoneNumber_Home, PhoneNumber_Business,
+ PrimaryLanguage, MaritalStatus, Religion,
+ PatientAccountNumber,dStatu,dDate  : String;
+ HL7Body : String;
+begin
+  EncodingCharacters   := '~\&';
+  SendingApplication   := 'HL7TEST';
+  SendingFacility      := 'PNT';
+  ReceivingApplication := 'DIETTEST';
+  ReceivingFacility    := '';
+  xDate                 := Copy(DateToStr(date),7,4) + Copy(DateToStr(date),4,2) + Copy(DateToStr(date),1,2) + Copy(TimeToStr(time),1,2) + Copy(TimeToStr(time),4,2);
+  Security             := '';
+  MessageType          := 'ADT^A04^ADT_A01';
+  MessageControlId     := '1';
+  ProcessingId         := '1';
+  VersionId            := '2.7';
+  SequenceNumber       := '1';
+
+  HL7Body              := 'MSH' + '|' + EncodingCharacters +
+                          '|' + SendingApplication + '|' + SendingFacility +
+                          '|' + ReceivingApplication + '|' + ReceivingFacility +
+                          '|' + xDate + '|' + Security + '|' + MessageType +
+                          '|' + MessageControlId + '|' + ProcessingId +
+                          '|' + VersionId + '|' + SequenceNumber + #13;
+  SetId                  := '1';
+  PatientId              := '';
+  PatientIdentifierList  := 'TEST_PID3^^^^ACSN';
+  AlternatePatientId_Pid := '0';
+  PatientName            := edtPaitentSurName.Text + '^'+edtPaitentName.Text;
+  MothersMaidenName      := edtMothersMaidenName.Text;
+  pDate                   := Copy(DateToStr(edtBirthDate.Date),7,4) + Copy(DateToStr(edtBirthDate.Date),4,2) + Copy(DateToStr(edtBirthDate.Date),1,2) + Copy(TimeToStr(edtBirthDate.Date),1,2) + Copy(TimeToStr(edtBirthDate.Date),4,2);
+  PatientAlias           := '';
+  Race                   := '';
+
+
+
+  HL7Body                := HL7Body + 'PID' + '|' +
+                            SetId + '|' + PatientId + '|' +
+                            PatientIdentifierList + '|'  +
+                            AlternatePatientId_Pid + '|' +
+                            PatientName + '|' +
+                            MothersMaidenName + '|' +
+                            pDate + '|' + PatientAlias +
+                            '|' + Race + '|' + PatientAddress +
+                            '|' + CountyCode + '|' + PhoneNumber_Home +
+                            '|' + PhoneNumber_Business +
+                            '|' + PrimaryLanguage + '|' + MaritalStatus +
+                            '|' + Religion + '|' + PatientAccountNumber + #13;
+
+  dStatu := VarToStr(edtStatu.EditValue);
+  dDate        := Copy(DateToStr(date),7,4) + Copy(DateToStr(date),4,2) + Copy(DateToStr(date),1,2) + Copy(TimeToStr(time),1,2) + Copy(TimeToStr(time),4,2);
+  HL7Body   := HL7Body + 'ORC|RE|PNTDIET|||' + dStatu + '|N|||' + dDate;
+  edtHL7Result.Text := HL7Body;
+end;
+procedure TFrmHL7Test.dxBarButton3Click(Sender: TObject);
+begin
+  CreateHL7String;
+end;
+
+end.

@@ -1,0 +1,253 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Caption = 'HL7 Test Application'
+  ClientHeight = 784
+  ClientWidth = 1049
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxGroupBox1: TcxGroupBox
+    Left = 0
+    Top = 26
+    Align = alTop
+    Caption = 'Diet Order'
+    TabOrder = 0
+    ExplicitTop = 20
+    Height = 177
+    Width = 1049
+    object cxGroupBox5: TcxGroupBox
+      Left = 328
+      Top = 15
+      Align = alRight
+      Caption = 'Common Order'
+      TabOrder = 0
+      ExplicitLeft = 288
+      ExplicitTop = 3
+      Height = 153
+      Width = 718
+      object cxLabel4: TcxLabel
+        Left = 16
+        Top = 26
+        Caption = 'Order Control ID'
+      end
+      object cxTextEdit1: TcxTextEdit
+        Left = 150
+        Top = 25
+        TabOrder = 1
+        Width = 121
+      end
+      object cxLabel5: TcxLabel
+        Left = 16
+        Top = 50
+        Caption = 'Placer Order Number'
+      end
+      object cxTextEdit2: TcxTextEdit
+        Left = 150
+        Top = 49
+        TabOrder = 3
+        Width = 121
+      end
+      object cxDateEdit1: TcxDateEdit
+        Left = 150
+        Top = 76
+        TabOrder = 4
+        Width = 121
+      end
+      object cxLabel6: TcxLabel
+        Left = 16
+        Top = 76
+        Caption = 'Date/Time Of Transaction'
+      end
+    end
+    object cxGroupBox6: TcxGroupBox
+      Left = 3
+      Top = 15
+      Align = alLeft
+      Caption = 'Patient Identification'
+      TabOrder = 1
+      Height = 153
+      Width = 319
+      object edtPaitentId: TcxTextEdit
+        Left = 90
+        Top = 20
+        TabOrder = 0
+        Width = 121
+      end
+      object cxLabel1: TcxLabel
+        Left = 16
+        Top = 24
+        Caption = 'Paitent ID'
+      end
+      object cxLabel2: TcxLabel
+        Left = 16
+        Top = 47
+        Caption = 'Paitent Name'
+      end
+      object edtPaitentName: TcxTextEdit
+        Left = 90
+        Top = 47
+        TabOrder = 3
+        Width = 121
+      end
+      object cxLabel3: TcxLabel
+        Left = 16
+        Top = 74
+        Caption = 'Date Of Birth'
+      end
+      object edtBirthDate: TcxDateEdit
+        Left = 90
+        Top = 74
+        TabOrder = 5
+        Width = 121
+      end
+    end
+  end
+  object cxGroupBox2: TcxGroupBox
+    Left = 0
+    Top = 203
+    Align = alClient
+    Caption = 'Result'
+    TabOrder = 1
+    ExplicitLeft = 408
+    ExplicitTop = 408
+    ExplicitWidth = 185
+    ExplicitHeight = 105
+    Height = 581
+    Width = 1049
+    object cxGroupBox3: TcxGroupBox
+      Left = 3
+      Top = 15
+      Align = alLeft
+      Caption = 'HL7 Result'
+      TabOrder = 0
+      ExplicitHeight = 399
+      Height = 557
+      Width = 486
+      object edtHL7Result: TcxMemo
+        Left = 3
+        Top = 15
+        Align = alClient
+        Lines.Strings = (
+          'edtHL7Result')
+        TabOrder = 0
+        ExplicitLeft = 152
+        ExplicitTop = 152
+        ExplicitWidth = 185
+        ExplicitHeight = 89
+        Height = 533
+        Width = 480
+      end
+    end
+    object cxGroupBox4: TcxGroupBox
+      Left = 489
+      Top = 15
+      Align = alLeft
+      Caption = 'JSON Result'
+      TabOrder = 1
+      ExplicitHeight = 399
+      Height = 557
+      Width = 557
+      object edtJSONResult: TcxMemo
+        Left = 3
+        Top = 15
+        Align = alClient
+        Lines.Strings = (
+          'cxMemo1')
+        TabOrder = 0
+        ExplicitLeft = 6
+        ExplicitTop = 18
+        ExplicitHeight = 375
+        Height = 533
+        Width = 551
+      end
+    end
+  end
+  object dxBarDockControl1: TdxBarDockControl
+    Left = 0
+    Top = 0
+    Width = 1049
+    Height = 26
+    Align = dalTop
+    BarManager = dxBarManager1
+  end
+  object dxSkinController1: TdxSkinController
+    NativeStyle = False
+    SkinName = 'PanatesBlue'
+    Left = 1000
+    Top = 728
+  end
+  object dxBarManager1: TdxBarManager
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Categories.Strings = (
+      'Varsay'#305'lan')
+    Categories.ItemsVisibles = (
+      2)
+    Categories.Visibles = (
+      True)
+    PopupMenuLinks = <>
+    UseSystemFont = True
+    Left = 520
+    Top = 400
+    DockControlHeights = (
+      0
+      0
+      0
+      0)
+    object dxBarManager1Bar1: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      Caption = #214'zel1'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1083
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarButton1'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'dxBarButton2'
+        end>
+      NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = True
+    end
+    object dxBarButton1: TdxBarButton
+      Caption = 'Save'
+      Category = 0
+      Hint = 'Save'
+      Visible = ivAlways
+    end
+    object dxBarButton2: TdxBarButton
+      Caption = 'Clear'
+      Category = 0
+      Hint = 'Clear'
+      Visible = ivAlways
+    end
+  end
+end

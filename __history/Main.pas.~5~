@@ -1,0 +1,60 @@
+unit Main;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, PanatesBlue,
+  Vcl.ComCtrls, dxCore, cxDateUtils, dxSkinsdxBarPainter, dxBar, cxClasses,
+  cxMemo, cxMaskEdit, cxDropDownEdit, cxCalendar, cxLabel, cxTextEdit,
+  dxSkinsForm, cxGroupBox;
+
+type
+  TForm6 = class(TForm)
+    cxGroupBox1: TcxGroupBox;
+    dxSkinController1: TdxSkinController;
+    cxGroupBox2: TcxGroupBox;
+    cxGroupBox3: TcxGroupBox;
+    cxGroupBox4: TcxGroupBox;
+    edtHL7Result: TcxMemo;
+    edtJSONResult: TcxMemo;
+    dxBarManager1: TdxBarManager;
+    dxBarDockControl1: TdxBarDockControl;
+    dxBarManager1Bar1: TdxBar;
+    dxBarButton1: TdxBarButton;
+    dxBarButton2: TdxBarButton;
+    cxGroupBox5: TcxGroupBox;
+    cxLabel4: TcxLabel;
+    cxTextEdit1: TcxTextEdit;
+    cxLabel5: TcxLabel;
+    cxTextEdit2: TcxTextEdit;
+    cxGroupBox6: TcxGroupBox;
+    edtPaitentId: TcxTextEdit;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    edtPaitentName: TcxTextEdit;
+    cxLabel3: TcxLabel;
+    edtBirthDate: TcxDateEdit;
+    cxDateEdit1: TcxDateEdit;
+    cxLabel6: TcxLabel;
+    dxBarDockControl2: TdxBarDockControl;
+    dxBarDockControl3: TdxBarDockControl;
+    dxBarManager1Bar2: TdxBar;
+    dxBarManager1Bar3: TdxBar;
+    dxBarButton3: TdxBarButton;
+    dxBarButton4: TdxBarButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+
+implementation
+
+{$R *.dfm}
+
+end.
